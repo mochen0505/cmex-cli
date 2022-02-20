@@ -1,0 +1,24 @@
+{
+  "name": "@cmex/cli",
+  "version": "1.0.0",
+  "description": "Node CLI for components library cmexd",
+  "bin": {
+    "cmex": "bin/cmex.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {},
+  "keywords": [
+    "node",
+    "cli",
+    "vite",
+    "svelte"
+  ],
+  "author": {
+    "name": "Mo",
+    "url": "https://github.com/mochen0505",
+    "email": "mochen0505@hotmail.com"
+  },
+  "license": "MIT"
+}
