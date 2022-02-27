@@ -21,15 +21,17 @@
     "email": "mochen0505@hotmail.com"
   },
   "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.17.5",
-    "@storybook/addon-actions": "^6.5.0-alpha.40",
-    "@storybook/addon-essentials": "^6.5.0-alpha.40",
-    "@storybook/addon-links": "^6.5.0-alpha.40",
-    "@storybook/svelte": "^6.5.0-alpha.40",
-    "babel-loader": "^8.2.3",
-    "svelte": "^3.46.4",
-    "svelte-loader": "^3.1.2"
-  },
-  "dependencies": {}
+  "dependencies": {
+    "boxen": "^5.1.2",
+    "chalk": "^2.4.2",
+    "commander": "^6.2.1",
+    "conf": "^10.1.1",
+    "dayjs": "^1.10.7",
+    "glob": "^7.2.0",
+    "got": "^12.0.1",
+    "minimist": "^1.2.5",
+    "ora": "^6.1.0",
+    "semver": "^6.3.0",
+    "shelljs": "^0.8.5"
+  }
 }
