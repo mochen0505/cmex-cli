@@ -11,9 +11,9 @@ program
 
 program.on('--help', () => {
   console.log(chalk.yellow('# run storybook with default port'));
-  console.log(chalk.white('# cmex dev'));
+  console.log(chalk.white('# cmex sb'));
   console.log(chalk.yellow('# run storybook with custom port'));
-  console.log(chalk.white('# cmex dev -p <port>'));
+  console.log(chalk.white('# cmex sb -p <port>'));
 })
 
 const args = require('minimist')(process.argv.slice(2));

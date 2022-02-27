@@ -17,7 +17,8 @@ function programConfig() {
   program
     .version(packageVersion)
     .usage('<cmd> [options]')
-    .command('dev', 'Run storybook')
+    .command('sb', 'Run storybook')
+    .command('build', 'Build your library')
     .parse(process.argv)
 }
 

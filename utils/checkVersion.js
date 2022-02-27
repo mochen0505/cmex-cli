@@ -2,7 +2,6 @@ const semver = require('semver');
 const chalk = require('chalk');
 const got = require('got');
 const boxen = require('boxen');
-const ora = require('ora');
 const packageVersion = require('../package.json').version;
 const { PROJECT_NODE_VERSION, NPM_VERSION_URL } = require('../scripts/constants');
 
