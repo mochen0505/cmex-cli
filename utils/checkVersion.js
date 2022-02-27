@@ -1,11 +1,14 @@
-const semver = require('semver');
-const chalk = require('chalk');
-const got = require('got');
-const boxen = require('boxen');
-const packageVersion = require('../package.json').version;
-const { PROJECT_NODE_VERSION, NPM_VERSION_URL } = require('../scripts/constants');
+import * as semver from 'semver';
+import chalk from 'chalk';
+import got from 'got';
+import boxen from 'boxen';
+import { version } from '../package.json';
+import {
+  PROJECT_NODE_VERSION,
+  NPM_VERSION_URL
+} from '../scripts/constants';
 
-function checkNodeVersion(requiredNodeVersion) {
+export const checkNodeVersion = (requiredNodeVersion) => {
     if (!semver.satisfies(PROJECT_NODE_VERSION, requiredNodeVersion)) {
         console.log(chalk.red(`You are using Node ${PROJECT_NODE_VERSION}, but @cmexd/cli requires a Node version of ${requiredNodeVersion} or higher`));
         process.exit(-1);
@@ -14,7 +17,7 @@ function checkNodeVersion(requiredNodeVersion) {
     }
 }
 
-function checkVentiVersion() {
+export const checkCmexVersion = () => {
     const options = {
         accept: 'application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*'
     }
@@ -22,8 +25,16 @@ function checkVentiVersion() {
     return got(NPM_VERSION_URL, options);
 }
 
-function notifier(latest) {
-    let message = ['New version of @cmexd/cli detected ', chalk.dim(packageVersion), chalk.reset(' → '), chalk.green(latest), ' \nRun ', chalk.cyan('npm i -g @ventii/cli'), ' to update'].join('')
+export const notifier = (latest) => {
+    let message = [
+      'New version of @cmexd/cli detected ',
+      chalk.dim(version),
+      chalk.reset(' → '),
+      chalk.green(latest),
+      ' \nRun ',
+      chalk.cyan('npm i -g @cmex/cli'),
+      ' to update'
+    ].join('')
 
     const boxenOpts = {
         padding: 1,
@@ -38,9 +49,3 @@ function notifier(latest) {
 
     console.log(message)
 }
-
-module.exports = {
-    checkNodeVersion,
-    checkVentiVersion,
-    notifier,
-};

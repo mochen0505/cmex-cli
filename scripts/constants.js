@@ -1,22 +1,16 @@
-const path = require('path');
+import * as path from 'path';
+import {fileURLToPath} from 'url';
+const __filename = fileURLToPath(import.meta.url);
 
-const CMEX_PATH = path.resolve(__dirname, '../');
-const PROJECT_PATH = process.cwd();
-const PROJECT_NODE_VERSION = process.version;
-const SERVER_HOST = '127.0.0.1';
-const SERVER_PORT = 8888;
-const NPM_VERSION_URL = 'https://registry.npmjs.org/@cmexd/cli/latest';
+const __dirname = path.dirname(__filename);
 
-const GITHUB = {
+export const CMEX_PATH = path.resolve(__dirname, '../');
+export const PROJECT_PATH = process.cwd();
+export const PROJECT_NODE_VERSION = process.version;
+export const SERVER_HOST = '127.0.0.1';
+export const SERVER_PORT = 8888;
+export const NPM_VERSION_URL = 'https://registry.npmjs.org/@cmexd/cli/latest';
+
+export const GITHUB = {
   host: 'github.com/mochen0505'
-}
-
-module.exports = {
-  CMEX_PATH,
-  PROJECT_PATH,
-  PROJECT_NODE_VERSION,
-  SERVER_HOST,
-  SERVER_PORT,
-  NPM_VERSION_URL,
-  GITHUB,
 }

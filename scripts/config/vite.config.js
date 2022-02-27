@@ -1,8 +1,9 @@
 import { svelte } from '@sveltejs/vite-plugin-svelte'
-const { resolve } = require('path')
-const glob = require('glob')
-const chalk = require('chalk')
-const { PROJECT_PATH } = require('../constants')
+import * as path from 'path'
+// const glob = require('glob')
+import glob from 'glob';
+import chalk from 'chalk';
+import { PROJECT_PATH } from '../constants.js'
 
 function setPlugins() {
   return [
@@ -10,9 +11,9 @@ function setPlugins() {
   ]
 }
 
-function getViteConfigs(scope) {
+export const getViteConfigs = (scope) => {
 
-  const allEntry = glob.sync(`${resolve(PROJECT_PATH, './packages')}/**/index.js`)
+  const allEntry = glob.sync(`${path.resolve(PROJECT_PATH, './packages')}/**/index.js`)
     .reduce((x, y) => Object.assign(x, {
       [y.split('/').slice(-2, -1)]: y,
     }), {});
@@ -25,7 +26,7 @@ function getViteConfigs(scope) {
       process.exit(-1)
     } else {
       entry = {
-        [scope]: `${resolve(PROJECT_PATH, './packages')}/${scope}/index.js`
+        [scope]: `${path.resolve(PROJECT_PATH, './packages')}/${scope}/index.js`
       };
     }
   } else {
@@ -40,7 +41,7 @@ function getViteConfigs(scope) {
         rollupOptions: {
           input: value,
           output: {
-            dir: resolve(PROJECT_PATH, `./packages/${key}/dist`),
+            dir: path.resolve(PROJECT_PATH, `./packages/${key}/dist`),
             format: 'es',
             sourcemap: true
           },
@@ -50,5 +51,3 @@ function getViteConfigs(scope) {
   }
   return viteConfigs
 }
-
-module.exports = getViteConfigs

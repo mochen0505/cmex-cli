@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
-const program = require('commander');
-const chalk = require('chalk');
-const ora = require('ora')
+import { Command } from 'commander';
+import chalk from 'chalk';
+import ora from 'ora';
+import minimist from 'minimist';
 import { defineConfig } from 'vite'
-const getViteConfigs = require('../scripts/config/vite.config')
+import { getViteConfigs } from '../scripts/config/vite.config.js'
 
+const program = new Command();
 
 program
   .usage('[options]')
@@ -18,7 +20,7 @@ program.on('--help', () => {
   console.log(chalk.white('# cmex build -s <scope>'));
 })
 
-const args = require('minimist')(process.argv.slice(2));
+const args = minimist(process.argv.slice(2));
 
 if (args.h || args.help) {
   program.help()
@@ -33,8 +35,9 @@ const spinner = ora({
 
 spinner.start()
 
-const rollupConfigs = getViteConfigs(scope)
-rollupConfigs.map(item => {
+const viteConfigs = getViteConfigs(scope)
+console.log(viteConfigs)
+viteConfigs.map(item => {
   defineConfig(item)
 })
 
