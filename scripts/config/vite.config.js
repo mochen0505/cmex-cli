@@ -1,6 +1,5 @@
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 import * as path from 'path'
-// const glob = require('glob')
 import glob from 'glob';
 import chalk from 'chalk';
 import { PROJECT_PATH } from '../constants.js'

@@ -36,7 +36,6 @@ const spinner = ora({
 spinner.start()
 
 const viteConfigs = getViteConfigs(scope)
-console.log(viteConfigs)
 viteConfigs.map(item => {
   defineConfig(item)
 })
