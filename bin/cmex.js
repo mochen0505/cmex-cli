@@ -23,13 +23,13 @@ function programConfig() {
 
 programConfig();
 
-checkNodeVersion(engines.node);
-checkCmexVersion().then(res => {
-  const data = JSON.parse(res.body);
-  const latest = data.version;
-  notifier(latest);
-  programConfig();
-}).catch(err => {
-  console.log(chalk.red(err));
-  process.exit(-1);
-});
+// checkNodeVersion(engines.node);
+// checkCmexVersion().then(res => {
+//   const data = JSON.parse(res.body);
+//   const latest = data.version;
+//   notifier(latest);
+//   programConfig();
+// }).catch(err => {
+//   console.log(chalk.red(err));
+//   process.exit(-1);
+// });
