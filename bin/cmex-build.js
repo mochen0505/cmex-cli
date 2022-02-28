@@ -4,8 +4,8 @@ import { Command } from 'commander';
 import chalk from 'chalk';
 import ora from 'ora';
 import minimist from 'minimist';
-import { defineConfig } from 'vite'
-import { getViteConfigs } from '../scripts/config/vite.config.js'
+import { rollup } from 'rollup';
+import { getRollupConfigs } from '../scripts/config/rollup.config.js'
 
 const program = new Command();
 
@@ -35,8 +35,16 @@ const spinner = ora({
 
 spinner.start()
 
-const viteConfigs = getViteConfigs(scope)
-viteConfigs.map(item => {
-  defineConfig(item)
+const rollupConfigs = getRollupConfigs(scope)
+rollupConfigs.map(item => {
+  const { output, ...props } = item
+  rollup(props).then(bundle => {
+    spinner.stop()
+    console.log(chalk.yellow('# Built successfully.'));
+    bundle.write(output)
+  }).catch(error => {
+    console.log(chalk.red(error));
+    process.exit(-1)
+  })
 })
 
