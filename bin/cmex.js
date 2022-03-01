@@ -8,7 +8,7 @@ import {
   checkNodeVersion,
   checkCmexVersion,
   notifier
-} from '../utils/checkVersion';
+} from '../utils/checkVersion.js';
 
 const program = new Command();
 
