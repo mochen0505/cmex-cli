@@ -32,7 +32,7 @@ const scope = args.s || args.scope
 
 const dir = `${path.resolve(PROJECT_PATH, './packages')}/${scope}/__tests__/index.test.js`
 
-shell.exec(`jest ${dir}`, (code, stdout, stderr) => {
+shell.exec(`jest ${dir}`, () => {
   const msg = 'Congrats!'
   figlet(msg, (err, data) => {
     console.log(gradient.pastel.multiline(data))
