@@ -6,7 +6,7 @@ import { version } from '../package.json';
 import {
   PROJECT_NODE_VERSION,
   NPM_VERSION_URL
-} from '../scripts/constants';
+} from '../scripts/constants.js';
 
 export const checkNodeVersion = (requiredNodeVersion) => {
     if (!semver.satisfies(PROJECT_NODE_VERSION, requiredNodeVersion)) {
