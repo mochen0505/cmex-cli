@@ -1,20 +1,20 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import chalk from 'chalk';
-import { version } from '../package.json';
-import { engines } from '../package.json';
-import {
-  checkNodeVersion,
-  checkCmexVersion,
-  notifier
-} from '../utils/checkVersion.js';
+// import chalk from 'chalk';
+// import { version } from '../package.json';
+// import { engines } from '../package.json';
+// import {
+//   checkNodeVersion,
+//   checkCmexVersion,
+//   notifier
+// } from '../utils/checkVersion.js';
 
 const program = new Command();
 
 function programConfig() {
   program
-    .version(version)
+    .version('1.3.0')
     .usage('<cmd> [options]')
     .command('sb', 'Run storybook')
     .command('build', 'Build your library')
