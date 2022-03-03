@@ -46,7 +46,7 @@ function setPlugins() {
       ],
       babelHelpers: 'runtime'
     }),
-    // commonjs(),
+    commonjs(),
     terser(),
     filesize()
   ]
