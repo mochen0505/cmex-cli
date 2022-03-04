@@ -1,14 +1,6 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander';
-// import chalk from 'chalk';
-// import { version } from '../package.json';
-// import { engines } from '../package.json';
-// import {
-//   checkNodeVersion,
-//   checkCmexVersion,
-//   notifier
-// } from '../utils/checkVersion.js';
+import { Command } from 'commander'
 
 const program = new Command();
 
@@ -21,16 +13,5 @@ function programConfig() {
     .command('test', 'Test your library')
     .parse(process.argv)
 }
-
-// checkNodeVersion(engines.node);
-// checkCmexVersion().then(res => {
-//   const data = JSON.parse(res.body);
-//   const latest = data.version;
-//   notifier(latest);
-//   programConfig();
-// }).catch(err => {
-//   console.log(chalk.red(err));
-//   process.exit(-1);
-// });
 
 programConfig();
