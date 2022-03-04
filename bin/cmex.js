@@ -1,20 +1,18 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander';
-// import chalk from 'chalk';
-// import { version } from '../package.json';
-// import { engines } from '../package.json';
-// import {
-//   checkNodeVersion,
-//   checkCmexVersion,
-//   notifier
-// } from '../utils/checkVersion.js';
-
-const program = new Command();
+const program = require('commander')
+const chalk = require('chalk');
+const packageVersion = require('../package.json').version
+const requiredNodeVersion = require('../package.json').engines.node
+const {
+  checkNodeVersion,
+  checkCmexVersion,
+  notifier
+} = require('../utils/checkVersion.js')
 
 function programConfig() {
   program
-    .version('1.8.0')
+    .version(packageVersion)
     .usage('<cmd> [options]')
     .command('sb', 'Run storybook')
     .command('build', 'Build your library')
@@ -22,15 +20,14 @@ function programConfig() {
     .parse(process.argv)
 }
 
-// checkNodeVersion(engines.node);
-// checkCmexVersion().then(res => {
-//   const data = JSON.parse(res.body);
-//   const latest = data.version;
-//   notifier(latest);
-//   programConfig();
-// }).catch(err => {
-//   console.log(chalk.red(err));
-//   process.exit(-1);
-// });
+checkNodeVersion(requiredNodeVersion);
+checkCmexVersion().then(res => {
+  const data = JSON.parse(res.body);
+  const latest = data.version;
+  notifier(latest);
+  programConfig();
+}).catch(err => {
+  console.log(chalk.red(err));
+  process.exit(-1);
+});
 
-programConfig();

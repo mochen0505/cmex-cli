@@ -1,13 +1,10 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander';
-import chalk from 'chalk';
-import ora from 'ora';
-import minimist from 'minimist';
-import { rollup } from 'rollup';
-import { getRollupConfigs } from '../scripts/config/rollup.config.js'
-
-const program = new Command();
+const program = require('commander')
+const chalk = require('chalk')
+const ora = require('ora')
+const { rollup } = require('rollup')
+const getRollupConfigs = require('../scripts/config/rollup.config.js')
 
 program
   .usage('[options]')
@@ -20,7 +17,7 @@ program.on('--help', () => {
   console.log(chalk.white('# cmex build -s <scope>'));
 })
 
-const args = minimist(process.argv.slice(2));
+const args = require('minimist')(process.argv.slice(2))
 
 if (args.h || args.help) {
   program.help()

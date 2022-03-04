@@ -1,14 +1,14 @@
-import * as semver from 'semver';
-import chalk from 'chalk';
-import got from 'got';
-import boxen from 'boxen';
-import { version } from '../package.json';
-import {
+const semver = require('semver')
+const chalk = require('chalk')
+const got = require('got')
+const boxen = require('boxen')
+const packageVersion = require('../package.json').version;
+const {
   PROJECT_NODE_VERSION,
   NPM_VERSION_URL
-} from '../scripts/constants.js';
+} = require('../scripts/constants.js');
 
-export const checkNodeVersion = (requiredNodeVersion) => {
+function checkNodeVersion (requiredNodeVersion) {
     if (!semver.satisfies(PROJECT_NODE_VERSION, requiredNodeVersion)) {
         console.log(chalk.red(`You are using Node ${PROJECT_NODE_VERSION}, but @cmexd/cli requires a Node version of ${requiredNodeVersion} or higher`));
         process.exit(-1);
@@ -17,7 +17,7 @@ export const checkNodeVersion = (requiredNodeVersion) => {
     }
 }
 
-export const checkCmexVersion = () => {
+function checkCmexVersion () {
     const options = {
         accept: 'application/vnd.npm.install-v1+json; q=1.0, application/json; q=0.8, */*'
     }
@@ -25,10 +25,10 @@ export const checkCmexVersion = () => {
     return got(NPM_VERSION_URL, options);
 }
 
-export const notifier = (latest) => {
+function notifier (latest) {
     let message = [
       'New version of @cmexd/cli detected ',
-      chalk.dim(version),
+      chalk.dim(packageVersion),
       chalk.reset(' → '),
       chalk.green(latest),
       ' \nRun ',
@@ -48,4 +48,10 @@ export const notifier = (latest) => {
     message = '\n' + boxen(message, boxenOpts)
 
     console.log(message)
+}
+
+module.exports = {
+  checkNodeVersion,
+  checkCmexVersion,
+  notifier,
 }

@@ -1,16 +1,16 @@
-import * as path from 'path'
-import glob from 'glob'
-import chalk from 'chalk'
-import svelte from 'rollup-plugin-svelte'
-import { nodeResolve } from '@rollup/plugin-node-resolve'
-import { terser } from "rollup-plugin-terser"
-import { babel } from '@rollup/plugin-babel'
-import commonjs from '@rollup/plugin-commonjs'
-import json from '@rollup/plugin-json'
-import image from '@rollup/plugin-image'
-import postcss from 'rollup-plugin-postcss'
-import filesize from 'rollup-plugin-filesize'
-import { CMEX_PATH, PROJECT_PATH } from '../constants.js'
+const { resolve } = require('path')
+const glob = require('glob')
+const chalk = require('chalk')
+const svelte = require('rollup-plugin-svelte')
+const { nodeResolve } = require('@rollup/plugin-node-resolve')
+const { terser } = require('rollup-plugin-terser')
+const { babel } = require('@rollup/plugin-babel')
+const commonjs = require('@rollup/plugin-commonjs')
+const json = require('@rollup/plugin-json')
+const image = require('@rollup/plugin-image')
+const postcss = require('rollup-plugin-postcss')
+const filesize = require('rollup-plugin-filesize')
+const { CMEX_PATH, PROJECT_PATH } = require('../constants.js')
 
 function setPlugins() {
   return [
@@ -42,7 +42,7 @@ function setPlugins() {
         ],
       ],
       include: [
-        path.resolve(PROJECT_PATH, './packages'),
+        resolve(PROJECT_PATH, './packages'),
       ],
       babelHelpers: 'runtime'
     }),
@@ -52,9 +52,9 @@ function setPlugins() {
   ]
 }
 
-export const getRollupConfigs = (scope) => {
+function getRollupConfigs (scope) {
 
-  const allEntry = glob.sync(`${path.resolve(PROJECT_PATH, './packages')}/*/index.js`)
+  const allEntry = glob.sync(`${resolve(PROJECT_PATH, './packages')}/*/index.js`)
     .reduce((x, y) => Object.assign(x, {
       [y.split('/').slice(-2, -1)]: y,
     }), {});
@@ -67,7 +67,7 @@ export const getRollupConfigs = (scope) => {
       process.exit(-1)
     } else {
       entry = {
-        [scope]: `${path.resolve(PROJECT_PATH, './packages')}/${scope}/index.js`
+        [scope]: `${resolve(PROJECT_PATH, './packages')}/${scope}/index.js`
       };
     }
   } else {
@@ -79,7 +79,7 @@ export const getRollupConfigs = (scope) => {
     rollupConfigs.push({
       input: value,
       output: {
-        dir: path.resolve(PROJECT_PATH, `./packages/${key}/dist`),
+        dir: resolve(PROJECT_PATH, `./packages/${key}/dist`),
         format: 'es',
         sourcemap: true
       },
@@ -88,3 +88,5 @@ export const getRollupConfigs = (scope) => {
   }
   return rollupConfigs
 }
+
+module.exports = getRollupConfigs

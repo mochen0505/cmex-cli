@@ -1,12 +1,9 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander'
-import chalk from 'chalk'
-import minimist from 'minimist';
-import { SERVER_PORT } from '../scripts/constants.js'
-import shell from 'shelljs'
-
-const program = new Command();
+const program = require('commander')
+const chalk = require('chalk')
+const { SERVER_PORT } = require('../scripts/constants.js')
+const { exec } = require('shelljs')
 
 program
   .usage('[options]')
@@ -19,7 +16,7 @@ program.on('--help', () => {
   console.log(chalk.white('# cmex sb -p <port>'));
 })
 
-const args = minimist(process.argv.slice(2));
+const args = require('minimist')(process.argv.slice(2))
 
 if (args.h || args.help) {
   program.help()
@@ -27,4 +24,4 @@ if (args.h || args.help) {
 
 const port = args.p || args.port || SERVER_PORT;
 
-shell.exec(`start-storybook -p ${port}`)
+exec(`start-storybook -p ${port}`)
