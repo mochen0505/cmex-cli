@@ -3,8 +3,8 @@
 const program = require('commander')
 const chalk = require('chalk')
 const ora = require('ora')
-const { rollup } = require('rollup')
-const getRollupConfigs = require('../scripts/config/rollup.config.js')
+const { build } = require(`esbuild`);
+const getEsbuildConfigs = require('../scripts/config/esbuild.js')
 
 program
   .usage('[options]')
@@ -32,13 +32,11 @@ const spinner = ora({
 
 spinner.start()
 
-const rollupConfigs = getRollupConfigs(scope)
+const rollupConfigs = getEsbuildConfigs(scope)
 rollupConfigs.map(item => {
-  const { output, ...props } = item
-  rollup(props).then(bundle => {
+  build(item).then(() => {
     spinner.stop()
     console.log(chalk.yellow('# Built successfully.'));
-    bundle.write(output)
   }).catch(error => {
     console.log(chalk.red(error));
     process.exit(-1)
