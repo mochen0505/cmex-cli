@@ -1,6 +1,6 @@
 {
   "name": "@cmex/cli",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "Node CLI for components library cmexd",
   "bin": {
     "cmex": "bin/cmex.js"
