@@ -32,8 +32,8 @@ const spinner = ora({
 
 spinner.start()
 
-const rollupConfigs = getEsbuildConfigs(scope)
-rollupConfigs.map(item => {
+const esbuildConfigs = getEsbuildConfigs(scope)
+esbuildConfigs.map(item => {
   build(item).then(() => {
     spinner.stop()
     console.log(chalk.yellow('# Built successfully.'));
