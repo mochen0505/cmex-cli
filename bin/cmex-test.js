@@ -5,7 +5,7 @@ const chalk = require('chalk')
 const { exec } = require('shelljs')
 const figlet = require('figlet')
 const gradient = require('gradient-string')
-const getTestDirectory = require('../utils/getDirectory')
+const getDirectory = require('../utils/getDirectory')
 
 program
   .usage('[options]')
@@ -26,7 +26,7 @@ if (args.h || args.help) {
 
 const scope = args.s || args.scope
 
-const dir = getTestDirectory(scope)
+const dir = getDirectory(scope, '__tests__/index.test.js')
 
 for(let value of Object.values(dir)) {
   exec(`jest ${value}`, () => {

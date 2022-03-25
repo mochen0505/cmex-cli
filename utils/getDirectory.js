@@ -3,8 +3,8 @@ const glob = require('glob')
 const chalk = require('chalk')
 const { PROJECT_PATH } = require('../scripts/constants.js')
 
-function getTestDirectory (scope) {
-  const allEntry = glob.sync(`${resolve(PROJECT_PATH, './packages')}/*/__tests__/index.test.js`)
+function getDirectory (scope, scopePath) {
+  const allEntry = glob.sync(`${resolve(PROJECT_PATH, './packages')}/*/${scopePath}`)
     .reduce((x, y) => Object.assign(x, {
       [y.split('/').slice(-3, -2)]: y,
     }), {});
@@ -17,7 +17,7 @@ function getTestDirectory (scope) {
       process.exit(-1)
     } else {
       entry = {
-        [scope]: `${resolve(PROJECT_PATH, './packages')}/${scope}/__tests__/index.test.js`
+        [scope]: `${resolve(PROJECT_PATH, './packages')}/${scope}/${scopePath}`
       };
     }
   } else {
@@ -27,4 +27,4 @@ function getTestDirectory (scope) {
   return entry
 }
 
-module.exports = getTestDirectory
+module.exports = getDirectory
