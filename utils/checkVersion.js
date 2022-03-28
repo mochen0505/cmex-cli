@@ -10,7 +10,7 @@ const {
 
 function checkNodeVersion (requiredNodeVersion) {
     if (!semver.satisfies(PROJECT_NODE_VERSION, requiredNodeVersion)) {
-        console.log(chalk.red(`You are using Node ${PROJECT_NODE_VERSION}, but @cmexd/cli requires a Node version of ${requiredNodeVersion} or higher`));
+        console.log(chalk.red(`You are using Node ${PROJECT_NODE_VERSION}, but @cmex/cli requires a Node version of ${requiredNodeVersion} or higher`));
         process.exit(-1);
     } else {
         console.log(chalk.yellow('Node environment checked...'))
@@ -27,7 +27,7 @@ function checkCmexVersion () {
 
 function notifier (latest) {
     let message = [
-      'New version of @cmexd/cli detected ',
+      'New version of @cmex/cli detected ',
       chalk.dim(packageVersion),
       chalk.reset(' → '),
       chalk.green(latest),
