@@ -8,8 +8,8 @@
   "engines": {
     "node": ">=14.0.0"
   },
-  "publishConfig": {
-    "access": "public"
+  "publishConfig":{
+    "registry":"https://mochen0505.jfrog.io/artifactory/api/npm/npm-local/"
   },
   "scripts": {},
   "keywords": [
