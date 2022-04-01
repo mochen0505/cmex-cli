@@ -55,3 +55,5 @@ module.exports = {
   checkCmexVersion,
   notifier,
 }
+
+export {};
