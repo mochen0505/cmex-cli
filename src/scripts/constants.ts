@@ -1,15 +1,11 @@
 const { resolve } = require('path')
 
-const CMEX_PATH = resolve(__dirname, '../');
-const PROJECT_PATH = process.cwd();
-const PROJECT_NODE_VERSION = process.version;
-const SERVER_HOST = '127.0.0.1';
-const SERVER_PORT = 8888;
-const NPM_VERSION_URL = 'https://registry.npmjs.org/@cmex/cli/latest';
-
-const GITHUB = {
-  host: 'github.com/mochen0505'
-}
+const CMEX_PATH: string = resolve(__dirname, '../');
+const PROJECT_PATH: string = process.cwd();
+const PROJECT_NODE_VERSION: string = process.version;
+const SERVER_HOST: string = '127.0.0.1';
+const SERVER_PORT: number = 8888;
+const NPM_VERSION_URL: string = 'https://registry.npmjs.org/@cmex/cli/latest';
 
 module.exports = {
   CMEX_PATH,
@@ -18,7 +14,6 @@ module.exports = {
   SERVER_HOST,
   SERVER_PORT,
   NPM_VERSION_URL,
-  GITHUB,
 }
 
 export {};
