@@ -20,3 +20,5 @@ module.exports = {
   NPM_VERSION_URL,
   GITHUB,
 }
+
+export {};

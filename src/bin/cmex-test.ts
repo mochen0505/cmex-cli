@@ -31,11 +31,13 @@ const dir = getDirectory(scope, '__tests__/index.test.js')
 for(let value of Object.values(dir)) {
   exec(`jest ${value}`, () => {
     const msg = 'Congrats!'
-    figlet(msg, (err, data) => {
+    figlet(msg, (err: Error, data: string): void => {
       console.log(gradient.pastel.multiline(data))
     })
   })
 }
+
+export {};
 
 
 

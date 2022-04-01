@@ -1,8 +1,8 @@
 const { resolve } = require('path')
 const sveltePlugin = require(`esbuild-svelte`);
-const peerDependencies = require('../../package.json').peerDependencies
+const peerDependencies = require('../../../package.json').peerDependencies
 const getDirectory = require('../../utils/getDirectory')
-const { PROJECT_PATH } = require('../constants.js')
+const { PROJECT_PATH } = require('../constants')
 
 const svelte = sveltePlugin({
   compilerOptions:{
@@ -16,9 +16,9 @@ function setPlugins() {
   ]
 }
 
-function getEsbuildConfigs (scope) {
+function getEsbuildConfigs (scope: string) {
 
-  const entry = getDirectory(scope, 'lib/index.js')
+  const entry: Entry = getDirectory(scope, 'lib/index.js')
 
   const esbuildConfigs = [];
   for (let [key, value] of Object.entries(entry)) {
@@ -39,3 +39,5 @@ function getEsbuildConfigs (scope) {
 }
 
 module.exports = getEsbuildConfigs
+
+export {};

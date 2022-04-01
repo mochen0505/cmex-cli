@@ -2,8 +2,8 @@
 
 const program = require('commander')
 const chalk = require('chalk');
-const packageVersion = require('../package.json').version
-const requiredNodeVersion = require('../package.json').engines.node
+const packageVersion = require('../../package.json').version
+const requiredNodeVersion = require('../../package.json').engines.node
 const {
   checkNodeVersion,
   checkCmexVersion,
@@ -21,13 +21,15 @@ function programConfig() {
 }
 
 checkNodeVersion(requiredNodeVersion);
-checkCmexVersion().then(res => {
+checkCmexVersion().then((res: { body: string }) => {
   const data = JSON.parse(res.body);
   const latest = data.version;
   notifier(latest);
   programConfig();
-}).catch(err => {
+}).catch((err: Error) => {
   console.log(chalk.red(err));
   process.exit(-1);
 });
+
+export {};
 

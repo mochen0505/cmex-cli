@@ -33,13 +33,15 @@ const spinner = ora({
 spinner.start()
 
 const esbuildConfigs = getEsbuildConfigs(scope)
-esbuildConfigs.map(item => {
+esbuildConfigs.map((item: any) => {
   build(item).then(() => {
     spinner.stop()
     console.log(chalk.yellow('# Built successfully.'));
-  }).catch(error => {
-    console.log(chalk.red(error));
+  }).catch((err: Error) => {
+    console.log(chalk.red(err));
     process.exit(-1)
   })
 })
+
+export {};
 

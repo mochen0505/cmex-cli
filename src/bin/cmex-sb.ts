@@ -25,3 +25,5 @@ if (args.h || args.help) {
 const port = args.p || args.port || SERVER_PORT;
 
 exec(`start-storybook -p ${port}`)
+
+export {};

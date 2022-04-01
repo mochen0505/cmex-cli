@@ -1,15 +1,15 @@
 const { resolve } = require('path')
 const glob = require('glob')
 const chalk = require('chalk')
-const { PROJECT_PATH } = require('../scripts/constants.js')
+const { PROJECT_PATH } = require('../scripts/constants')
 
-function getDirectory (scope, scopePath) {
-  const allEntry = glob.sync(`${resolve(PROJECT_PATH, './packages')}/*/${scopePath}`)
-    .reduce((x, y) => Object.assign(x, {
-      [y.split('/').slice(-3, -2)]: y,
+function getDirectory (scope: string, scopePath: string): Entry {
+  const allEntry: Entry = glob.sync(`${resolve(PROJECT_PATH, './packages')}/*/${scopePath}`)
+    .reduce((x: Entry, y: string) => Object.assign(x, {
+      [y.split('/').slice(-3, -2)[0]]: y,
     }), {});
 
-  let entry;
+  let entry: Entry;
 
   if (scope) {
     if (!Object.keys(allEntry).includes(scope)) {
@@ -28,3 +28,5 @@ function getDirectory (scope, scopePath) {
 }
 
 module.exports = getDirectory
+
+export {};

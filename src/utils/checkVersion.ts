@@ -2,13 +2,13 @@ const semver = require('semver')
 const chalk = require('chalk')
 const got = require('got')
 const boxen = require('boxen')
-const packageVersion = require('../package.json').version;
+const packageVersion = require('../../package.json').version;
 const {
   PROJECT_NODE_VERSION,
   NPM_VERSION_URL
-} = require('../scripts/constants.js');
+} = require('../scripts/constants');
 
-function checkNodeVersion (requiredNodeVersion) {
+function checkNodeVersion (requiredNodeVersion: string): void {
     if (!semver.satisfies(PROJECT_NODE_VERSION, requiredNodeVersion)) {
         console.log(chalk.red(`You are using Node ${PROJECT_NODE_VERSION}, but @cmex/cli requires a Node version of ${requiredNodeVersion} or higher`));
         process.exit(-1);
@@ -25,7 +25,7 @@ function checkCmexVersion () {
     return got(NPM_VERSION_URL, options);
 }
 
-function notifier (latest) {
+function notifier (latest: string): void {
     let message = [
       'New version of @cmex/cli detected ',
       chalk.dim(packageVersion),
