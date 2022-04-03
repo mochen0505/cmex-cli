@@ -2,5 +2,18 @@
 
 A Node CLI for component library
 
-latest version of ora and got only support esm
+## Install Dependencies
+```shell
+npm install
+```
+
+## Build
+```shell
+npm run build
+```
+
+## Publish
+```shell
+npm publish
+```
 
