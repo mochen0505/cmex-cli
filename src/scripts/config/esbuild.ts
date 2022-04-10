@@ -18,7 +18,7 @@ function setPlugins() {
 
 function getEsbuildConfigs (scope: string) {
 
-  const entry: Entry = getDirectory(scope, 'lib/index.js')
+  const entry: Entry = getDirectory(scope, 'lib/index.ts')
 
   const esbuildConfigs = [];
   for (let [key, value] of Object.entries(entry)) {
