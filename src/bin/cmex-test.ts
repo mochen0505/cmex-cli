@@ -26,7 +26,7 @@ if (args.h || args.help) {
 
 const scope = args.s || args.scope
 
-const dir = getDirectory(scope, '__tests__/index.test.js')
+const dir = getDirectory(scope, '__tests__/index.test.ts')
 
 for(let value of Object.values(dir)) {
   exec(`jest ${value}`, () => {
