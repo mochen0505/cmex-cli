@@ -2,6 +2,11 @@
 
 A Node CLI for component library
 
+## Usage
+```shell
+npm install -g @cmex/cli
+```
+
 ## Install Dependencies
 ```shell
 npm install
