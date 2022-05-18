@@ -1,6 +1,6 @@
 # README #
 
-A Node CLI for component library
+A Node CLI for svelte component library
 
 ## Usage
 ```shell
